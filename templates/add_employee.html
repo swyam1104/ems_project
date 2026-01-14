@@ -1,0 +1,11 @@
+<h2>Add Employee</h2>
+<form method="POST">
+{% csrf_token %}
+<input name="name" placeholder="Name"><br>
+<input name="email" placeholder="Email"><br>
+<input name="department" placeholder="Department"><br>
+<input name="designation" placeholder="Designation"><br>
+<input name="salary" placeholder="Salary"><br>
+<input type="date" name="date_joined"><br>
+<button>Add</button>
+</form>

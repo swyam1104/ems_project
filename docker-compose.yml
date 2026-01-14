@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DEBUG=1
+      - DB_ENGINE=django.db.backends.mysql
+      - DB_NAME=ems_db
+      - DB_USER=ems_user
+      - DB_PASSWORD=ems_password
+      - DB_HOST=db
+      - DB_PORT=3306
+    networks:
+      - ems_network
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: ems_db
+      MYSQL_USER: ems_user
+      MYSQL_PASSWORD: ems_password
+      MYSQL_ROOT_PASSWORD: ems_root_password
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - ems_network
+
+volumes:
+  db_data:
+
+networks:
+  ems_network:
+    driver: bridge

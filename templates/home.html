@@ -1,0 +1,19 @@
+<h1>Employee List</h1>
+<a href="/add/">Add Employee</a>
+<table border="1">
+<tr><th>Name</th><th>Email</th><th>Department</th><th>Actions</th></tr>
+{% for emp in employees %}
+<tr>
+<td>{{ emp.name }}</td>
+<td>{{ emp.email }}</td>
+<td>{{ emp.department }}</td>
+<td>
+<a href="/edit/{{ emp.id }}/">Edit</a>
+<a href="/delete/{{ emp.id }}/">Delete</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+
+
+<!-- go through the whole project and files and tell me how to make image container for the whole EMS_PROJECT 2 -->
